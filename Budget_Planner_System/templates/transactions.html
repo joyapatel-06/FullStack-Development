@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Transactions | Budget Planner{% endblock %}
+{% block content %}
+<div class="page-title">
+    <div><p class="tag">INCOME AND EXPENSES</p><h1>All Transactions</h1></div>
+    <a class="btn" href="/add_transaction">+ Add Transaction</a>
+</div>
+<div class="panel">
+{% if rows %}
+<table>
+    <tr><th>Type</th><th>Category</th><th>Amount</th><th>Date</th><th>Description</th><th>Action</th></tr>
+    {% for row in rows %}
+    <tr>
+        <td>{{ row[1] }}</td><td>{{ row[2] }}</td><td>₹{{ row[3] }}</td>
+        <td>{{ row[4] }}</td><td>{{ row[5] or '' }}</td>
+        <td><form method="POST" action="/delete_transaction/{{ row[0] }}"><button class="delete-btn" type="submit">Delete</button></form></td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p class="empty">No transactions found.</p>
+{% endif %}
+</div>
+{% endblock %}

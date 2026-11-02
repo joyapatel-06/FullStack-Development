@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Add Transaction | Budget Planner{% endblock %}
+{% block content %}
+<div class="form-box wide">
+    <h1>Add Transaction</h1>
+    <p>Add your income or expense details.</p>
+    <form method="POST">
+        <label>Transaction Type</label>
+        <select name="transaction_type" required>
+            <option value="">Select Type</option>
+            <option value="Income">Income</option>
+            <option value="Expense">Expense</option>
+        </select>
+        <label>Category</label>
+        <select name="category" required>
+            <option value="">Select Category</option>
+            <option>Salary</option><option>Business</option><option>Food</option>
+            <option>Travel</option><option>Shopping</option><option>Education</option>
+            <option>Bills</option><option>Health</option><option>Other</option>
+        </select>
+        <label>Amount</label>
+        <input type="number" name="amount" min="0.01" step="0.01" required>
+        <label>Date</label>
+        <input type="date" name="transaction_date" required>
+        <label>Description</label>
+        <input type="text" name="description">
+        <button class="btn" type="submit">Save Transaction</button>
+    </form>
+    <p class="message">{{ msg }}</p>
+</div>
+{% endblock %}
