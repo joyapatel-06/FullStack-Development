@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - Attendance System{% endblock %}
+{% block content %}
+<h1>Dashboard</h1>
+<div class="stats">
+  <div class="stat"><div class="num">{{ total_students }}</div><div class="lbl">Total Students</div></div>
+  <div class="stat"><div class="num">{{ present_today }}</div><div class="lbl">Present Today</div></div>
+  <div class="stat"><div class="num">{{ absent_today }}</div><div class="lbl">Absent Today</div></div>
+  <div class="stat"><div class="num">{{ overall }}%</div><div class="lbl">Overall Attendance</div></div>
+</div>
+<div class="card">
+  <h2>Quick Actions</h2>
+  <a class="btn" href="{{ url_for('attendance') }}">Mark Today's Attendance</a>
+  <a class="btn" href="{{ url_for('students') }}">Manage Students</a>
+  <a class="btn" href="{{ url_for('report') }}">View Report</a>
+</div>
+{% endblock %}

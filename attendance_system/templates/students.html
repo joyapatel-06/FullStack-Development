@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Students - Attendance System{% endblock %}
+{% block content %}
+<h1>Students</h1>
+<div class="card">
+  <h2>Add Student</h2>
+  <form method="post" class="inline">
+    <div><label>Roll No</label><input type="text" name="roll_no" required></div>
+    <div><label>Name</label><input type="text" name="name" required></div>
+    <div><label>Class</label><input type="text" name="class_name" required></div>
+    <button type="submit">Add</button>
+  </form>
+</div>
+<div class="card table-wrap">
+  <h2>All Students ({{ students|length }})</h2>
+  <table>
+    <tr><th>Roll No</th><th>Name</th><th>Class</th><th>Action</th></tr>
+    {% for s in students %}
+    <tr>
+      <td>{{ s.roll_no }}</td><td>{{ s.name }}</td><td>{{ s.class_name }}</td>
+      <td>
+        <form method="post" action="{{ url_for('delete_student', student_id=s.id) }}"
+              onsubmit="return confirm('Delete this student and all their attendance?');">
+          <button class="btn-red" type="submit">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="4" class="muted">No students yet. Add one above.</td></tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

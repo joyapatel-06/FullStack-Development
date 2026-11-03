@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Register - Attendance System{% endblock %}
+{% block content %}
+<div class="card auth-box stack">
+  <h1>Create Account</h1>
+  <form method="post">
+    <label>Full Name</label>
+    <input type="text" name="name" required>
+    <label>Username</label>
+    <input type="text" name="username" required>
+    <label>Password</label>
+    <input type="password" name="password" required minlength="4">
+    <button type="submit">Register</button>
+  </form>
+  <p class="muted">Already registered? <a href="{{ url_for('login') }}">Login</a></p>
+</div>
+{% endblock %}
